@@ -1,9 +1,6 @@
 import itertools
 import time
 
-# ==============================================================================
-# DATOS DE LA PRÁCTICA (JUGADORES Y CONFIGURACIÓN GLOBAL)[cite: 1]
-# ==============================================================================
 PRESUPUESTO = 100
 CUPOS = {'POR': 1, 'DEF': 4, 'MED': 4, 'DEL': 2}
 
@@ -39,9 +36,6 @@ def mostrar_equipo(equipo):
     for nombre, puesto, precio, puntos in equipo:
         print(f"{nombre:<12} | {puesto:<6} | {precio:<11} | {puntos:<6.1f}")
 
-# ==============================================================================
-# OPCIÓN 1: ALGORITMOS VORACES (GREEDY)[cite: 1]
-# ==============================================================================
 def voraz(jugadores, criterio="puntos"):
     if criterio == "puntos":
         lista = sorted(jugadores, key=lambda x: x[3], reverse=True)
@@ -70,19 +64,16 @@ def opcion_1():
     
     # Voraz por puntos
     eq_pts, c_pts, p_pts, ok_pts = voraz(JUGADORES, "puntos")
-    print("\n--- VERSIÓN A: VORAZ POR PUNTOS ---")
+    print("\nVERSIÓN A: VORAZ POR PUNTOS")
     mostrar_equipo(eq_pts)
     print(f"Puntos totales: {p_pts} | Coste: {c_pts} M€ | ¿Once completo?: {'Sí' if ok_pts else 'No'}")
     
     # Voraz por ratio
     eq_rat, c_rat, p_rat, ok_rat = voraz(JUGADORES, "ratio")
-    print("\n--- VERSIÓN B: VORAZ POR RATIO (PUNTOS / PRECIO) ---")
+    print("\nVERSIÓN B: VORAZ POR RATIO (PUNTOS / PRECIO)")
     mostrar_equipo(eq_rat)
     print(f"Puntos totales: {p_rat} | Coste: {c_rat} M€ | ¿Once completo?: {'Sí' if ok_rat else 'No'}")
 
-# ==============================================================================
-# OPCIÓN 2: FUERZA BRUTA[cite: 1]
-# ==============================================================================
 def fuerza_bruta(jugadores):
     por_puesto = {'POR': [], 'DEF': [], 'MED': [], 'DEL': []}
     for j in jugadores:
@@ -125,20 +116,17 @@ def opcion_2():
     
     print(f"\nNúmero total de combinaciones válidas que cumplen presupuesto: {n_comb}")
     print(f"Tiempo de ejecución: {t_fb:.5f} segundos")
-    print(f"\n--- EQUIPO ÓPTIMO (REFERENCIA FUERZA BRUTA) ---")
+    print(f"\nEQUIPO ÓPTIMO (REFERENCIA FUERZA BRUTA)")
     mostrar_equipo(eq_fb)
     print(f"Puntos Totales Óptimos: {p_fb} | Coste Total: {c_fb} M€")
 
-# ==============================================================================
-# MENÚ PRINCIPAL INTERACTIVO
-# ==============================================================================
 def menu_principal():
     while True:
         print("\n" + "="*60)
-        print("          PRÁCTICA S16 · ONCE IDEAL FANTASY          ")
+        print("FANTASY")
         print("="*60)
-        print("1. Algoritmos Voraces (Por puntos y por ratio)")
-        print("2. Fuerza Bruta (Evaluación completa y óptimo)")
+        print("1. Algoritmos Voraces)")
+        print("2. Fuerza Bruta")
         print("0. Salir")
         print("="*60)
         
@@ -149,7 +137,6 @@ def menu_principal():
         elif opcion == "2":
             opcion_2()
         elif opcion == "0":
-            print("\n¡Programa finalizado!")
             break
         else:
             print("\n[ERROR] Opción no válida. Por favor, introduzca 0, 1 o 2.")
