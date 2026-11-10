@@ -154,5 +154,5 @@ def menu_principal():
         else:
             print("\n[ERROR] Opción no válida. Por favor, introduzca 0, 1 o 2.")
 
-if __name__ == "__main__":
-    menu_principal()
+# Llamada directa al menú al ejecutar el archivo
+menu_principal()
