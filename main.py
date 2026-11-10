@@ -122,13 +122,11 @@ def opcion_2():
 
 def menu_principal():
     while True:
-        print("\n" + "="*60)
+        
         print("FANTASY")
-        print("="*60)
         print("1. Algoritmos Voraces)")
         print("2. Fuerza Bruta")
         print("0. Salir")
-        print("="*60)
         
         opcion = input("Seleccione una opción (0-2): ").strip()
         
